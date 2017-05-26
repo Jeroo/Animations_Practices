@@ -1,9 +1,13 @@
 package com.example.salvador.animations_practices;
 
+import android.animation.Keyframe;
 import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.MovementMethod;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView textView2;
     Button button;
     ObjectAnimator animation2;
+    float dX, dY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +35,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         findViewById(R.id.my_button).setOnClickListener(this);
 
+        button = new Button(this);
+        ///button.setText("TextView!!!!!!!!");
+        //button.setOnTouchListener(this);
+
+       // onTouch(button,null);
+
         animation2 = ObjectAnimator.ofFloat(textView2, "Rotation", 360f);
         animation2.setDuration(1500);
+
 
 
 
@@ -63,4 +75,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     }
+
+
+
+
+   /* public boolean onTouch(View view, MotionEvent event) {
+
+        switch (event.getAction()) {
+
+            case MotionEvent.ACTION_DOWN:
+
+                dX = view.getX() - event.getRawX();
+                dY = view.getY() - event.getRawY();
+                break;
+
+            case MotionEvent.ACTION_MOVE:
+
+                view.animate()
+                        .x(event.getRawX() + dX)
+                        .y(event.getRawY() + dY)
+                        .setDuration(0)
+                        .start();
+                break;
+            default:
+                return false;
+        }
+        return true;
+    }*/
 }
